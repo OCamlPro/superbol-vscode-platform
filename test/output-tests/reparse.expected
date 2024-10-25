@@ -255,15 +255,15 @@ Re-parsing `test/testsuite/sql/gixsql_test/TSQL037A-SQLITE.cbl':
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL037B-MYSQL.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL037B-PGSQL.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL037B-SQLITE.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL038A.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL039A.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL040A.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL041A-ORACLE.cbl':
  Parse: Failure.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL041A.cbl':

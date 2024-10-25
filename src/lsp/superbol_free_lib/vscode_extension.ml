@@ -90,7 +90,7 @@ let package =
       "@types/node", "^20.3.2";
     ]
 
-let cob_extensions_pattern = "[cC]{ob,OB,bl,BL,py,PY,bx,BX}"
+let cob_extensions_pattern = "[cC]{ob,OB,bl,BL,py,PY,bx,BX,bsql}"
 let contributes =
   Manifest.contributes ()
     ~languages: [

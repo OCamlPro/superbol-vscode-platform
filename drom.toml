@@ -229,6 +229,10 @@ dir = "src/lsp/ezr_toml"
 # edit 'src/lsp/ezr_toml/package.toml' for package-specific options
 
 [[package]]
+dir = "src/lsp/sql_preproc"
+# edit 'src/lsp/ezr_toml/package.toml' for package-specific options
+
+[[package]]
 dir = "src/lsp/sql_ast"
 # edit 'src/lsp/sql_ast/package.toml' for package-specific options
 

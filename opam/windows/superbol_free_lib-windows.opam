@@ -51,6 +51,7 @@ depends: [
   "dune" {>= "2.8.0"}
   "vscode-json-windows" {= version}
   "superbol_preprocs-windows" {= version}
+  "sql_preproc-windows" {= version}
   "lwt-windows" {>= "5"}
   "ez_toml-windows" {= version}
   "ez_file-windows" {>= "0.3"}

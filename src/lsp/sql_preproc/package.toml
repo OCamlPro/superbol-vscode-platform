@@ -1,6 +1,6 @@
 
 # name of package
-name = "superbol_free_lib"
+name = "sql_preproc"
 skeleton = "library"
 
 # version if different from project version
@@ -23,7 +23,7 @@ gen-version = "version.ml"
 
 # supported file generators are "ocamllex", "ocamlyacc" and "menhir" 
 # default is [ "ocamllex", "ocamlyacc" ] 
-# generators = [ "ocamllex", "menhir" ]
+generators = ["ocamllex"]
 
 # menhir options for the package
 #Example:
@@ -43,37 +43,25 @@ gen-version = "version.ml"
 
 # preprocessing options
 #  preprocess = "per-module (((action (run ./toto.sh %{input-file})) mod))" 
-preprocess = "pps ppx_cobcflags ppx_deriving_encoding"
+preprocess = "pps ppx_deriving.show"
 
 # files to skip while updating at package level
-skip = ["index.mld", "main.ml" ]
+# skip = []
 
 # package library dependencies
 #   [dependencies]
 #   ez_file = ">=0.1 <1.3"
 #   base-unix = { libname = "unix", version = ">=base" } 
 [dependencies]
-cobol_common = "version"
+ppx_deriving = ">=5.2.1"
+ez_file = "0.3"
 cobol_indent = "version"
-cobol_lsp = "version"
-cobol_parser = "version"
 cobol_typeck = "version"
+cobol_unit = "version"
 superbol_preprocs = "version"
-ez_file = ">=0.3"
-ez_cmdliner = "0.3.0"
-vscode-json = "version"
-ez_api = { version = "2.0", libname = "ez_api.encoding" }
-ez_toml = "version"
-sql_preproc = "version"
-
-# We only depend on `lwt` via `ez_api` (and we don't even use any bit
-# of `lwt` at all).  But we still need to add the following constraint
-# on `lwt` so it installs properly on windows:
-lwt = ">=5"
 
 # package tools dependencies
 [tools]
-# ...
 
 # package fields (depends on package skeleton)
 #Examples:
@@ -87,4 +75,3 @@ lwt = ">=5"
 #  dune-stanzas = "(flags (:standard (:include linking.sexp)))" 
 #  static-clibs = "unix" 
 [fields]
-# ...

@@ -1,0 +1,114 @@
+From 2ac8acac539025b62c398d543556712fd908f579 Mon Sep 17 00:00:00 2001
+From: NeoKaios <mateo.dugas@ocamlpro.com>
+Date: Mon, 7 Oct 2024 14:18:59 +0200
+Subject: [PATCH] feat: using superbol preprocessor
+
+---
+ gixsql-tests-nunit/CompilerConfig2.cs         |  2 +-
+ gixsql-tests-nunit/GixSqlDynamicTestRunner.cs |  2 +-
+ gixsql-tests-nunit/Runner.cs                  |  2 +-
+ .../gixsql_test_local_linux.xml               | 20 +++++++++----------
+ 4 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/gixsql-tests-nunit/CompilerConfig2.cs b/gixsql-tests-nunit/CompilerConfig2.cs
+index 3596ad6..f25db7b 100644
+--- a/gixsql-tests-nunit/CompilerConfig2.cs
++++ b/gixsql-tests-nunit/CompilerConfig2.cs
+@@ -88,7 +88,7 @@ namespace gixsql_tests
+                 }
+                 else
+                 {
+-                    cc.gixpp_exe = Path.Combine(cc.gixsql_bin_path, "gixpp");
++                    cc.gixpp_exe = "/opt/superbol-free-linux-x64";
+                     if (!File.Exists(cc.gixpp_exe)) throw new Exception(cc.gixpp_exe);
+ 
+                     cc.cobc_exe = Path.Combine(cc.cobc_bin_dir_path, "cobc");
+diff --git a/gixsql-tests-nunit/GixSqlDynamicTestRunner.cs b/gixsql-tests-nunit/GixSqlDynamicTestRunner.cs
+index cdb24cc..99d8e82 100644
+--- a/gixsql-tests-nunit/GixSqlDynamicTestRunner.cs
++++ b/gixsql-tests-nunit/GixSqlDynamicTestRunner.cs
+@@ -242,7 +242,7 @@ namespace gixsql_tests
+                         if (client_pp_params == null)
+                             client_pp_params = String.Empty;
+                     }
+-                    string gixpp_args = $"-e -v -S -I. -I{cc.gixsql_copy_path} -i {msrc} -o {pp_file} {client_pp_params}";
++                    string gixpp_args = $"sql preproc -I. -I{cc.gixsql_copy_path} --copybooks {msrc}";
+                     if (td.AdditionalPreProcessParams != String.Empty)
+                         gixpp_args += (" " + td.AdditionalPreProcessParams);
+ 
+diff --git a/gixsql-tests-nunit/Runner.cs b/gixsql-tests-nunit/Runner.cs
+index 512583f..acdaafc 100644
+--- a/gixsql-tests-nunit/Runner.cs
++++ b/gixsql-tests-nunit/Runner.cs
+@@ -42,7 +42,7 @@ namespace gixsql_tests_nunit
+                 }
+             }
+ 
+-            int num_results_ok = results.Count(a => a.Value == "KO");
++            int num_results_ok = results.Count(a => a.Value == "OK");
+             int num_results_ko = results.Count(a => a.Value == "KO");
+ 
+             int mlen = results.Select(a => a.Key.Length).Max();
+diff --git a/gixsql-tests-nunit/gixsql_test_local_linux.xml b/gixsql-tests-nunit/gixsql_test_local_linux.xml
+index bafb784..c39e555 100644
+--- a/gixsql-tests-nunit/gixsql_test_local_linux.xml
++++ b/gixsql-tests-nunit/gixsql_test_local_linux.xml
+@@ -2,12 +2,12 @@
+ <test-local-config>
+ 
+ 	<global>
+-		<gixsql-install-base>/home/marchetto/gixsql/dist</gixsql-install-base>
++		<gixsql-install-base>/opt/gixsql</gixsql-install-base>
+ 		<keep-temps>1</keep-temps>
+ 		<verbose>0</verbose>
+-		<test-filter>TSQL042A</test-filter>
+-		<dbtype-filter>odbc</dbtype-filter>
+-		<mem-check>valgrind --log-file=valgrind-${testid}-${arch}-${dbtype}.txt --leak-check=full --suppressions=/home/marchetto/gixsql/suppressions.txt</mem-check>
++		<test-filter></test-filter>
++		<dbtype-filter>pgsql</dbtype-filter>
++		<mem-check></mem-check>
+ 		<temp-dir>/tmp/gixsql-test</temp-dir>
+ 		<environment>
+ 			<variable key="GIXSQL_FIXUP_PARAMS" value="on" />
+@@ -24,9 +24,9 @@
+ 
+ 	<compilers>
+ 		<compiler type="gcc" architecture="x64" id="gnucobol-3.1.2-linux-gcc-x64">
+-			<bin_dir_path>/usr/bin</bin_dir_path>
+-			<lib_dir_path>/usr/lib</lib_dir_path>
+-			<config_dir_path>/etc/gnucobol</config_dir_path>
++			<bin_dir_path>/usr/local/bin</bin_dir_path>
++			<lib_dir_path>/usr/local/lib</lib_dir_path>
++			<config_dir_path>/usr/local/share/gnucobol/config</config_dir_path>
+ 			<environment>
+ 			</environment>
+ 		</compiler>
+@@ -71,7 +71,7 @@
+ 
+ 	<data-sources>
+ 		<data-source type="pgsql" index="1">
+-			<hostname>192.168.56.1</hostname>
++			<hostname>localhost</hostname>
+ 			<port>5432</port>
+ 			<dbname>testdb1</dbname>
+ 			<username>test</username>
+@@ -79,14 +79,14 @@
+ 			<options>native_cursors=off</options>
+ 		</data-source>
+ 		<data-source type="pgsql" index="2">
+-			<hostname>192.168.56.1</hostname>
++			<hostname>localhost</hostname>
+ 			<port>5432</port>
+ 			<dbname>testdb2</dbname>
+ 			<username>test</username>
+ 			<password>test</password>
+ 			<options>native_cursors=off</options>
+ 		</data-source>
+-        
++
+ 		<data-source type="mysql" index="1">
+ 			<hostname>192.168.1.171</hostname>
+ 			<port>3306</port>
+-- 
+2.40.1
+
