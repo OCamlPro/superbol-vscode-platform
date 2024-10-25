@@ -49,6 +49,8 @@ install: [
 depends: [
   "ocaml" {>= "4.14.0"}
   "dune" {>= "2.8.0"}
+  "superbol_preprocs-windows" {= version}
+  "sql_ast-windows" {= version}
   "cobol_unit-windows" {= version}
   "cobol_ptree-windows" {= version}
   "cobol_parser-windows" {= version}

@@ -20,6 +20,7 @@ open Ez_file.V1
 open EzFile.OP
 
 let public_subcommands = [
+  Command_sql.preproc_cmd ;
   Command_pp.cmd ;
   Command_lsp.cmd;
   Command_texi2rst.cmd ;

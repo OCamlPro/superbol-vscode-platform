@@ -5,7 +5,7 @@
   (public_name cobol_typeck)
   (wrapped true)
   ; use field 'dune-libraries' to add libraries without opam deps
-  (libraries cobol_unit cobol_ptree cobol_parser cobol_data cobol_common )
+  (libraries superbol_preprocs sql_ast cobol_unit cobol_ptree cobol_parser cobol_data cobol_common )
   ; use field 'dune-flags' to set this value
   (flags (:standard))
   ; use field 'dune-stanzas' to add more stanzas here

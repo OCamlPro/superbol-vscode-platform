@@ -249,6 +249,42 @@ let references ~(data_definitions: Cobol_unit.Types.data_definitions) procedure 
       in
       Visitor.skip_children acc
 
+    method! fold_exec_block' exec_block acc =
+      let register_name name acc =
+        let qn = Cobol_ptree.Name name in
+        let loc = name.loc in
+        begin try
+            let bnd = Qualmap.find_binding qn data_definitions.data_items.named in
+            { acc with
+              refs = Typeck_outputs.register_data_qualref
+                  ~loc bnd.full_qn acc.refs }
+          with
+          | Not_found ->
+            acc  (* ignored for now, as we don't process all the DATA DIV. yet. *)
+          | Qualmap.Ambiguous (lazy matching_qualnames) ->
+            error acc @@ Ambiguous_data_name { given_qualname = qn &@ loc;
+                                               matching_qualnames }
+        end in
+      let acc = match exec_block.payload with
+        | Superbol_preprocs.Generic.Generic_exec_block _ ->
+            acc
+        | Superbol_preprocs.Esql.Esql_exec_block esql ->
+          let cob_var_extractor_folder = object
+            inherit [Sql_ast.cobolVarId list] Sql_ast.Visitor.folder
+            method! fold_cobol_var_id cob_var acc =
+              Cobol_common.Visitor.skip (cob_var::acc)
+          end in
+          let cobol_vars =
+            Sql_ast.Visitor.fold_esql_instruction cob_var_extractor_folder
+              esql []
+          in
+          List.fold_left begin fun acc cobol_var_id ->
+              register_name cobol_var_id acc
+          end acc cobol_vars
+        | _ -> acc
+      in
+      Visitor.skip_children acc
+
   end in
 
   Cobol_unit.Visitor.fold_procedure visitor procedure init |> references

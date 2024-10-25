@@ -40,6 +40,9 @@ Overview of sub-commands::
   snapshot
     Manage environment snapshots
   
+  sql preproc
+    Preprocess SQL EXECs
+  
   switch
     Print current switch
   
@@ -524,6 +527,44 @@ Where options are:
 * :code:`--quit`   Do not run the command, just exit
 
 * :code:`--save ID`   Create snapshot ID from state
+
+
+main.exe sql preproc
+~~~~~~~~~~~~~~~~~~~~~~
+
+Preprocess SQL EXECs
+
+
+**USAGE**
+::
+  
+  main.exe sql preproc FILE [OPTIONS]
+
+Where options are:
+
+
+* :code:`FILE`   COBOL files to preproc
+
+* :code:`-D VAR=VAL`   Define a pre-processor variable VAR, with value VAL
+
+* :code:`-I DIRECTORY`   Add DIRECTORY to library search path
+
+* :code:`--conf CONF_FILE`   Set the configuration file to be used
+
+* :code:`--copybooks`   Preprocess copybooks also (without REPLACING)
+
+* :code:`--dialect DIALECT` or :code:`--std DIALECT`   Set the dialect to bu used (overriden by `--conf` if used)
+
+* :code:`--ext EXT`   Add .EXT as an extension to find copybooks (default is cpy)
+
+* :code:`--free`   Shorthand for `--source-format FREE`
+
+* :code:`--recovery BOOL`   Enable/disable parser recovery after syntax errors (default: true)
+
+* :code:`--silence STRING`   Silence specific messages
+
+* :code:`--source-format SOURCE_FORMAT`   Set the format of source code; allowed values are: { FIXED (the default), FREE}
+Overrides `format` from configuration file if present.
 
 
 main.exe switch

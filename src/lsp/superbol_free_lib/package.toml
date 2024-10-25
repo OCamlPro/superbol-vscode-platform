@@ -64,6 +64,7 @@ ez_cmdliner = "0.3.0"
 vscode-json = "version"
 ez_api = { version = "2.0", libname = "ez_api.encoding" }
 ez_toml = "version"
+sql_preproc = "version"
 
 # We only depend on `lwt` via `ez_api` (and we don't even use any bit
 # of `lwt` at all).  But we still need to add the following constraint

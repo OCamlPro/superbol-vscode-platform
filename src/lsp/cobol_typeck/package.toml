@@ -21,8 +21,8 @@ kind = "library"
 # name of a file to generate with the current version
 gen-version = "version.ml"
 
-# supported file generators are "ocamllex", "ocamlyacc" and "menhir" 
-# default is [ "ocamllex", "ocamlyacc" ] 
+# supported file generators are "ocamllex", "ocamlyacc" and "menhir"
+# default is [ "ocamllex", "ocamlyacc" ]
 # generators = [ "ocamllex", "menhir" ]
 
 # menhir options for the package
@@ -42,7 +42,7 @@ gen-version = "version.ml"
 # pack = "Mylib"
 
 # preprocessing options
-#  preprocess = "per-module (((action (run ./toto.sh %{input-file})) mod))" 
+#  preprocess = "per-module (((action (run ./toto.sh %{input-file})) mod))"
 preprocess = "pps ppx_deriving.show ppx_deriving.ord"
 
 # files to skip while updating at package level
@@ -51,13 +51,15 @@ skip = ["index.mld"]
 # package library dependencies
 #   [dependencies]
 #   ez_file = ">=0.1 <1.3"
-#   base-unix = { libname = "unix", version = ">=base" } 
+#   base-unix = { libname = "unix", version = ">=base" }
 [dependencies]
 cobol_ptree = "version"
 cobol_common = "version"
 cobol_data = "version"
 cobol_parser = "version"
 cobol_unit = "version"
+superbol_preprocs = "version"
+sql_ast = "version"
 
 # package tools dependencies
 [tools]
@@ -65,14 +67,14 @@ ppx_deriving = ">=5.2.1"
 
 # package fields (depends on package skeleton)
 #Examples:
-#  dune-stanzas = "(preprocess (pps ppx_deriving_encoding))" 
-#  dune-libraries = "bigstring" 
-#  dune-trailer = "(install (..))" 
-#  opam-trailer = "pin-depends: [..]" 
-#  no-opam-test = "yes" 
-#  no-opam-doc = "yes" 
-#  gen-opam = "some" | "all" 
-#  dune-stanzas = "(flags (:standard (:include linking.sexp)))" 
-#  static-clibs = "unix" 
+#  dune-stanzas = "(preprocess (pps ppx_deriving_encoding))"
+#  dune-libraries = "bigstring"
+#  dune-trailer = "(install (..))"
+#  opam-trailer = "pin-depends: [..]"
+#  no-opam-test = "yes"
+#  no-opam-doc = "yes"
+#  gen-opam = "some" | "all"
+#  dune-stanzas = "(flags (:standard (:include linking.sexp)))"
+#  static-clibs = "unix"
 [fields]
 # ...

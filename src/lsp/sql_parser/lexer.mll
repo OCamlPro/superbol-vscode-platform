@@ -27,6 +27,7 @@
         "BEGIN", BEGIN;
         "BETWEEN", BETWEEN;
         "BY", BY;
+        "CHAR", CHAR;
         "CLOSE", CLOSE;
         "COMMIT", COMMIT;
         "CONNECT", CONNECT;
@@ -111,7 +112,7 @@
 
     let get_keyword s =
       try Hashtbl.find kwd_table (String.uppercase_ascii s)
-      with Not_found -> WORD s 
+      with Not_found -> WORD s
 }
 
 let number = '-'? ['0'-'9']+ (','['0'-'9']+)?
@@ -127,31 +128,33 @@ rule token = parse
       { COBOL_VAR s }
   | '\\' (['a'-'z' 'A'-'Z']['A'-'Z' 'a'-'z' '0'-'9' '_']* as s)
       { BACKSLASH_VAR s }
-  | ['a'-'z' 'A'-'Z' '0'-'9']['A'-'Z' 'a'-'z' '0'-'9' '-' '_' '*' ]* as s 
+  | ['a'-'z' 'A'-'Z' '0'-'9']['A'-'Z' 'a'-'z' '0'-'9' '-' '_' '*' ]* as s
       { get_keyword s }
   | number as n
       { NUMBER n }
-  | '\'' ( ['A'-'Z' 'a'-'z' '0'-'9' '_' '(' '*' ')' '.' '[' ']']* as s) '\''
+  | '\'' [^ '\'']* '\'' as s
+      { STRING s}
+  | '\"' [^ '\"']* '\"' as s
       { STRING s}
 
   | "||"
       { OR }
-  | ['='] 
+  | '='
       { EQUAL }
-  | ['+'] 
+  | '+'
       { PLUS }
-  | ['-'] 
+  | '-'
       { MINUS }
-  | "<=" 
+  | "<="
       { LESS_EQ }
-  | ">=" 
+  | ">="
        { GREAT_EQ }
-  | "<" 
+  | "<"
         { LESS }
-  | ">" 
-        { GREAT } 
-  | ":" 
-        { COLON } 
+  | ">"
+        { GREAT }
+  | ":"
+        { COLON }
   | ','
       { COMMA }
   | '.'
@@ -162,7 +165,13 @@ rule token = parse
       { RPAR }
   | '*'
       { STAR }
-(*   | _ as s 
+  | ';'
+      { SEMICOLON }
+  | ' '
+      { token lexbuf }
+  | _ as c
+      { failwith (Printf.sprintf "unexpected character: %C" c) }
+(*   | _ as s
       { TOKEN s } *)
   | eof
       { EOF }

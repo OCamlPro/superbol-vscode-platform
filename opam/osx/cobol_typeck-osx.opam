@@ -49,6 +49,8 @@ install: [
 depends: [
   "ocaml" {>= "4.14.0"}
   "dune" {>= "2.8.0"}
+  "superbol_preprocs-osx" {= version}
+  "sql_ast-osx" {= version}
   "cobol_unit-osx" {= version}
   "cobol_ptree-osx" {= version}
   "cobol_parser-osx" {= version}

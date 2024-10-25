@@ -49,6 +49,7 @@ depends: [
   "dune" {>= "2.8.0"}
   "vscode-json" {= version}
   "superbol_preprocs" {= version}
+  "sql_preproc" {= version}
   "lwt" {>= "5"}
   "ez_toml" {= version}
   "ez_file" {>= "0.3"}

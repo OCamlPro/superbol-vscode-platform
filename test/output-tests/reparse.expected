@@ -113,7 +113,7 @@ Re-parsing `test/testsuite/sql/sql_exec/sql_test04.cbl':
 Re-parsing `test/testsuite/sql/sql_exec/sql_test05.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/sql_exec/sql_test06.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/sql_exec/sql_test07.cbl':
  Parse: Failure.
 Re-parsing `test/testsuite/sql/sql_exec/sql_test08.cbl':
@@ -169,7 +169,7 @@ Re-parsing `test/testsuite/sql/gixsql_test/TSQL009A.cbl':
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL010A.cbl':
  Parse: OK. Reparse: Failure.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL011A.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL012A.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL013A.cbl':
@@ -255,15 +255,15 @@ Re-parsing `test/testsuite/sql/gixsql_test/TSQL037A-SQLITE.cbl':
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL037B-MYSQL.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL037B-PGSQL.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL037B-SQLITE.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL038A.cbl':
  Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL039A.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL040A.cbl':
- Parse: Failure.
+ Parse: OK. Reparse: OK.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL041A-ORACLE.cbl':
  Parse: Failure.
 Re-parsing `test/testsuite/sql/gixsql_test/TSQL041A.cbl':

@@ -12,7 +12,7 @@
 (**************************************************************************)
 
 type Cobol_common.Exec_block.TYPES.exec_block +=
-  | Esql_exec_block of Sql_ast.esql_instuction
+  | Esql_exec_block of Sql_ast.esql_instruction
 
 let () =
   Cobol_common.Exec_block.register_exec_block_type
@@ -31,6 +31,6 @@ let () =
     end
 
 let scanner =
-  Cobol_parser.Options.Stateless_exec_scanner (fun text -> 
+  Cobol_parser.Options.Stateless_exec_scanner (fun text ->
     Esql_exec_block (Sql_parser.parse text) , []
   )

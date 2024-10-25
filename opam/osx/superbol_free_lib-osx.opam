@@ -51,6 +51,7 @@ depends: [
   "dune" {>= "2.8.0"}
   "vscode-json-osx" {= version}
   "superbol_preprocs-osx" {= version}
+  "sql_preproc-osx" {= version}
   "lwt-osx" {>= "5"}
   "ez_toml-osx" {= version}
   "ez_file-osx" {>= "0.3"}

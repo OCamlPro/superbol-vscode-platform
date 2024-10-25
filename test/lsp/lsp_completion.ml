@@ -5443,3 +5443,27 @@ let%expect_test "preproc-interaction" =
         REMARKS.\n
         SECURITY.\n
   |}]
+
+(* FIXME *)
+let%expect_test "sql-preproc-interaction" =
+  let end_with_postproc = completion_positions @@ extract_position_markers {cobol|
+        IDENTIFICATION DIVISION.
+        PROGRAM-ID. prog.
+        PROCEDURE DIVISION.
+            EXEC SQL CONNECT _|_RESET END-EXEC.
+  |cobol}
+  in
+  end_with_postproc [%expect.output];
+  [%expect {|
+    {"params":{"diagnostics":[],"uri":"file://__rootdir__/prog.cob"},"method":"textDocument/publishDiagnostics","jsonrpc":"2.0"}
+    __rootdir__/prog.cob:5.29:
+       2           IDENTIFICATION DIVISION.
+       3           PROGRAM-ID. prog.
+       4           PROCEDURE DIVISION.
+       5 >             EXEC SQL CONNECT RESET END-EXEC.
+    ----                                ^
+       6
+    (line 4, character 29):
+    Caught exception: Sql_parser__Grammar.MenhirBasics.Error
+    Caught exception: Sql_parser__Grammar.MenhirBasics.Error
+  |}]

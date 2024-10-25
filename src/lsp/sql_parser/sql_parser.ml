@@ -65,6 +65,17 @@ let parse text =
       ([], None) text
     |> fst |> List.rev
   in
-  let ast = Grammar.MenhirInterpreter.loop (supplier tokens) init_checkpoint in
-  (*   Format.fprintf Format.std_formatter "\n%a\n" Sql_ast.Printer.pp ast; *)
+  match tokens with
+  | Grammar.((EXECUTE, _, _) :: (SQL, _, _) :: (IGNORE, _, _) :: _)
+  | Grammar.((EXEC, _, _) :: (SQL, _, _) :: (IGNORE, _, _) :: _) ->
+    (* failsafe to avoid parsing potentially breaking SQL IGNORE sections *)
+    Sql_ast.Ignore []
+  | _ ->
+    let ast = Grammar.MenhirInterpreter.loop (supplier tokens) init_checkpoint in
+    (* Format.fprintf Format.std_formatter "\n%a\n" Sql_ast.Printer.pp ast;  *)
+    ast
+
+let parseString str =
+  let ast = Grammar.main Lexer.token str in
+(*   Format.fprintf Format.std_formatter "\n%a\n" Sql_ast.Printer.pp ast; *)
   ast

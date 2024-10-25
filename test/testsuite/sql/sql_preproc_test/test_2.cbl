@@ -1,0 +1,6 @@
+﻿       IDENTIFICATION DIVISION.
+       PROGRAM-ID. test_2.   
+       PROCEDURE DIVISION. 
+
+           EXEC SQL AT CONN1 CREATE TABLE TAB1 (FLD1 INT) END-EXEC. 
+           STOP RUN.

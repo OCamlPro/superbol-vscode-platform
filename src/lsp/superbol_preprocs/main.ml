@@ -18,8 +18,8 @@ let exec_scanners =
     exec_scanner_fallback = Generic.scanner;  (* for now; TODO: Call.scanner? *)
     (* NB: Kept empty for now (the LSP does not yet benefit from this
        preprocessor) *)
-    exec_scanners = Cobol_preproc.Options.EXEC_MAP.empty;
-    (* exec_scanners = Cobol_preproc.Options.EXEC_MAP.singleton "SQL" Esql.scanner; *)
+    (* exec_scanners = Cobol_preproc.Options.EXEC_MAP.empty; *)
+    exec_scanners = Cobol_preproc.Options.EXEC_MAP.singleton "SQL" Esql.scanner;
   }
 
 let more scanners =
