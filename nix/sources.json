@@ -1,0 +1,91 @@
+{
+    "ez_api": {
+        "sha256": "1zhc53rc361sz8xy3znmwwvsm35g5z3siyg2g8h0rpd5sm6rrsh3",
+        "type": "tarball",
+        "url": "https://github.com/ocamlpro/ez_api/archive/refs/tags/2.1.0.tar.gz",
+        "url_template": "https://github.com/ocamlpro/ez_api/archive/refs/tags/<version>.tar.gz",
+        "version": "2.1.0"
+    },
+    "ez_cmdliner": {
+        "sha256": "0ls7w2dbd7k1y718sfc987rbycycmy19mk9hp614zcjrrjn50llp",
+        "type": "tarball",
+        "url": "https://github.com/ocamlpro/ez_cmdliner/archive/v0.4.3.tar.gz",
+        "url_template": "https://github.com/ocamlpro/ez_cmdliner/archive/v<version>.tar.gz",
+        "version": "0.4.3"
+    },
+    "ez_file": {
+        "sha256": "1apk1id9s5ybn8z7p8vm2gff6qgcn4yn2f8z10306sjfzvfsfxql",
+        "type": "tarball",
+        "url": "https://github.com/ocamlpro/ez_file/archive/v0.3.0.tar.gz",
+        "url_template": "https://github.com/ocamlpro/ez_file/archive/v0.3.0.tar.gz",
+        "version": "0.3.0"
+    },
+    "ez_subst": {
+        "sha256": "0jxz5q6x95crhq0vcwxigbmkj69hgrhxmpvr82yqd2jbvksqfkvp",
+        "type": "tarball",
+        "url": "https://github.com/ocamlpro/ez_subst/archive/v0.2.1.tar.gz",
+        "url_template": "https://github.com/ocamlpro/ez_subst/archive/v<version>.tar.gz",
+        "version": "0.2.1"
+    },
+    "json-data-encoding": {
+        "sha256": "1pwx4dzfb0w7vz4lbm1ppq1lpzd1ss7v4r3ydnx2hdrdgv2ki01a",
+        "type": "tarball",
+        "url": "https://gitlab.com/nomadic-labs/data-encoding/-/archive/v1.0.1/data-encoding-v1.0.1.tar.gz",
+        "url_template": "https://gitlab.com/nomadic-labs/data-encoding/-/archive/v<version>/data-encoding-v<version>.tar.gz",
+        "version": "1.0.1"
+    },
+    "lsp": {
+        "sha256": "0qzpx6l03c27zx260wy28pqdn0xd2sfy7s8mspcddcb00vg0rzva",
+        "type": "tarball",
+        "url": "https://github.com/ocaml/ocaml-lsp/releases/download/1.18.0/lsp-1.18.0.tbz",
+        "url_template": "https://github.com/ocaml/ocaml-lsp/releases/download/<version>/lsp-<version>.tbz",
+        "version": "1.18.0"
+    },
+    "menhir": {
+        "sha256": "12a1zxbkipa2i0k7ay0frfzyibpdvh3hr0rcq18kgsp924wp9q5x",
+        "type": "tarball",
+        "url": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz",
+        "url_template": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz",
+        "version": "20231231"
+    },
+    "menhirLib": {
+        "sha256": "12a1zxbkipa2i0k7ay0frfzyibpdvh3hr0rcq18kgsp924wp9q5x",
+        "type": "tarball",
+        "url": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz",
+        "url_template": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz",
+        "version": "20231231"
+    },
+    "menhirSdk": {
+        "sha256": "12a1zxbkipa2i0k7ay0frfzyibpdvh3hr0rcq18kgsp924wp9q5x",
+        "type": "tarball",
+        "url": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz",
+        "url_template": "https://gitlab.inria.fr/fpottier/menhir/-/archive/20231231/archive.tar.gz",
+        "version": "20231231"
+    },
+    "nixpkgs": {
+        "branch": "master",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b4f480fea347cec3ac599d77986aa17a817bb591",
+        "sha256": "1dq2xg36n4yvihdl37rgs89bxi5imd4bl69g7lfpf2x663madyzd",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/b4f480fea347cec3ac599d77986aa17a817bb591.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "ocplib_stuff": {
+        "sha256": "0fn5l9h01236v4ah94mx5l8z62lf5i5096q1frhqp43dkfq5sd3r",
+        "type": "tarball",
+        "url": "https://github.com/ocamlpro/ocplib_stuff/archive/v0.4.0.tar.gz",
+        "url_template": "https://github.com/ocamlpro/ocplib_stuff/archive/v0.4.0.tar.gz",
+        "version": "0.4.0"
+    },
+    "ppx_deriving_encoding": {
+        "sha256": "0inl5w1gl2zhpyzd9i9lqs112wyfqm5w1xvg3p4yw4syv6dsx8xc",
+        "type": "tarball",
+        "url": "https://gitlab.com/o-labs/ppx_deriving_encoding/-/archive/0.3.0/ppx_deriving_encoding-0.3.0.tar.gz",
+        "url_template": "https://gitlab.com/o-labs/ppx_deriving_encoding/-/archive/<version>/ppx_deriving_encoding-<version>.tar.gz",
+        "version": "0.3.0"
+    }
+}
