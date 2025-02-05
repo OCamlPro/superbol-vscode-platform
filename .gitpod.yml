@@ -1,0 +1,39 @@
+
+tasks:
+
+- name: setup GnuCOBOL and COBOLworx debugging environment on Ubuntu 22.04
+  init: |
+    mkdir -p _build/install/deb
+    pushd _build/install/deb
+    wget "https://cobolworx.com/pages/downloads/gnucobol_3.2.-1_amd64.deb"
+    wget "https://cobolworx.com/pages/downloads/cblgdb_4.28.4-1_amd64.deb"
+    pushd
+  before: |
+    # note: sadly we need this to be done every time as only /workspace is kept, but linked
+    #       against those dependencies; and also we do want to recompile after adjustments
+    #       this can all be dropped as soon as we would use a prepared docker
+    sudo apt install -y $PWD/_build/install/deb/*
+    # fixing broken interpreter in cobcd 
+    sudo sed -i -e 's#python2#python3#' /usr/bin/cobcd
+
+- name: setup coding environment on Ubuntu 22.04 (superbol-free)
+  before: |
+    sudo apt install opam ocaml-dune
+    opam init
+    # note autofonce-lib currently needs to be manually installed, see https://github.com/OCamlPro/superbol-studio-oss/issues/79
+    opam install autofonce_lib
+    opam install ./opam/*.opam -y--deps-only
+    gp sync-done opam-prepare
+
+- name: build superbol-free (LSP)
+  command: |
+    gp sync-await opam-prepare
+    make superbol-free
+
+- name: build superbol-vscode-plattform (VSIX)
+  init: yarn install
+  command: make vsix-debug
+
+vscode:
+  extensions:
+    - ocamllabs.ocaml-platform
